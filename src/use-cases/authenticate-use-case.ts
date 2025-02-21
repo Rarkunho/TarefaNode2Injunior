@@ -2,7 +2,7 @@ import {compare, hash} from 'bcryptjs'
 import { UsersRepository } from '@/repositories/users-repository'
 import { InvalidCredentialsError } from './errors/invalid-credentials-error'
 import { User } from '@prisma/client'
-import { error } from 'console'
+
 
 interface AuthenticateUseCaseRequest {
     email : string,

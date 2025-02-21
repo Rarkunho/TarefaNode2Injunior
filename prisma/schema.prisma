@@ -6,8 +6,8 @@
 
 //atualize com 
 // npx prisma generate
-//e então npx 
-//prisma migrate dev
+//e então
+// npx prisma migrate dev
 
 generator client {
   provider = "prisma-client-js"
