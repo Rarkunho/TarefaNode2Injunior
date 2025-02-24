@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Rarkunho/TarefaNodeInjunior#readme",
   "dependencies": {
+    "@fastify/cookie": "11.0.2",
     "@fastify/jwt": "9.0.4",
     "@prisma/client": "6.4.1",
     "@types/bcryptjs": "2.4.6",
