@@ -1,6 +1,4 @@
-import {hash} from 'bcryptjs'
 import { UsersRepository } from '@/repositories/users-repository'
-import { UserAlreadyExists } from './errors/user-already-exists-error'
 import { User } from '@prisma/client'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
 

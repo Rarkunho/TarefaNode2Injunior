@@ -1,7 +1,5 @@
-import { prisma } from '@/lib/prisma'
 import { PostsRepository } from '@/repositories/posts-repository'
 import { Post } from '@prisma/client'
-import { User } from '@prisma/client'
 
 interface CreatePostCaseRequest {
     titulo : string,
