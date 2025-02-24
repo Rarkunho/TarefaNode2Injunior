@@ -5,6 +5,14 @@ import { UsersRepository } from "../users-repository";
 //tudo que for falar com o DB coloca aqui
 
 export class PrismaUsersRepository implements UsersRepository{
+    async delete(id: string): Promise<User | null> {
+        const user = await prisma.user.delete({
+            where:{
+                id
+            }
+        })
+        return user
+    }
     async findById(id: string){
         const user = await prisma.user.findUnique({
             where:{

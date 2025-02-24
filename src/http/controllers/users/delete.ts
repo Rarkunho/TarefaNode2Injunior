@@ -2,11 +2,11 @@ import { FastifyReply, FastifyRequest } from "fastify"
 
 import {z} from 'zod'
 
-import { GetUserUseCase } from "@/use-cases/get-use-case"
+import { DeleteUserUseCase } from "@/use-cases/delete-user-use-case"
 import { PrismaUsersRepository } from "@/repositories/prisma/prisma-users-repository"
 import { ResourceNotFoundError } from "@/use-cases/errors/resource-not-found-error"
 
-export async function get(request :FastifyRequest,reply :FastifyReply){
+export async function deleteUser(request :FastifyRequest,reply :FastifyReply){
     const getParamsSchema = z.object({
         id : z.string().uuid()
     })
@@ -15,11 +15,11 @@ export async function get(request :FastifyRequest,reply :FastifyReply){
 
     try {
         const prismaUsersRepository = new PrismaUsersRepository()
-        const getUserUseCase = new GetUserUseCase(prismaUsersRepository)
-        const user = await getUserUseCase.execute({
+        const deleteUserUseCase = new DeleteUserUseCase(prismaUsersRepository)
+        const user = await deleteUserUseCase.execute({
             id
         })
-        return reply.status(200).send(user)
+        return reply.status(204).send(user)
     } catch (err) {
         if (err instanceof(ResourceNotFoundError)){
             return reply.status(404).send({message:err.message})
