@@ -17,10 +17,18 @@ export async function authenticate(request :FastifyRequest,reply :FastifyReply){
     try {
         const prismaUsersRepository = new PrismaUsersRepository()
         const authenticateUseCase = new AuthenticateUseCase(prismaUsersRepository)
-        await authenticateUseCase.execute({
+        const {user} = await authenticateUseCase.execute({
             email,
             senha_digest
         })
+        
+        const token = await reply.jwtSign({},{
+            sign:{
+                sub: user.id
+            }
+        })
+
+        return reply.status(200).send({token})
     } catch (err) {
         if (err instanceof(InvalidCredentialsError)){
             return reply.status(400).send({message:err.message})

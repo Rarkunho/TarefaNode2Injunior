@@ -2,11 +2,13 @@ import fastify from 'fastify'
 import { z, ZodError } from 'zod'
 import { userRoutes } from './http/controllers/users/routes'
 import { postsRoutes } from './http/controllers/posts/routes'
+import fastifyJwt from '@fastify/jwt'
+import { env } from './env'
 
 export const app = fastify()
 
-app.get('/', (request,reply) => {
-    return {message: 'Hello World'}
+app.register(fastifyJwt, {
+    secret: env.JWT_SECRET
 })
 
 app.register(userRoutes)
