@@ -2,29 +2,30 @@ import { PostsRepository } from '@/repositories/posts-repository'
 import { Post } from '@prisma/client'
 
 interface CreatePostCaseRequest {
-    titulo : string,
-    conteudo : string,
-    created_at : Date,
-    idAutor : string
+    titulo: string,
+    conteudo: string,
+    created_at: Date,
+    idAutor: string
 }
 
 interface CreatePostCaseResponse {
-    post : Post
+    post: Post
 }
 
-export class CreatePostUseCase{
-    constructor(private postsRepository : PostsRepository){}
+export class CreatePostUseCase {
+    constructor(private postsRepository: PostsRepository) { }
 
-    async execute({titulo, conteudo, created_at, idAutor}:CreatePostCaseRequest) : Promise<CreatePostCaseResponse>{
+    async execute({ titulo, conteudo, created_at, idAutor }: CreatePostCaseRequest): Promise<CreatePostCaseResponse> {
         const post = await this.postsRepository.create({
             titulo,
             conteudo,
             created_at,
-            idAutor})
+            idAutor
+        })
 
-        return {post}
+        return { post }
     }
-    
-   
-   
+
+
+
 }

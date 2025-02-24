@@ -8,9 +8,9 @@ import { profile } from "./profile";
 import { verifyJWT } from "@/http/middlewares/verify-jwt";
 import { refresh } from "./refresh";
 
-export function userRoutes(app: FastifyInstance){
+export function userRoutes(app: FastifyInstance) {
     app.post('/criarUser', register)
-    app.post('/authenticate',authenticate)
+    app.post('/authenticate', authenticate)
 
     app.get('/users/:id', get)
     app.delete('/users/:id', deleteUser)
@@ -20,5 +20,5 @@ export function userRoutes(app: FastifyInstance){
     app.patch('/token/refresh', refresh)
 
     // Authenticated
-    app.get('/profile', {onRequest : [verifyJWT]}, profile)
+    app.get('/profile', { onRequest: [verifyJWT] }, profile)
 }

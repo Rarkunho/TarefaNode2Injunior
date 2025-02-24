@@ -7,24 +7,24 @@ interface GetUserUseCaseRequest {
 }
 
 interface GetUserUseCaseResponse {
-    user : User
+    user: User
 }
 
-export class GetUserUseCase{
-    constructor(private usersRepository : UsersRepository){
+export class GetUserUseCase {
+    constructor(private usersRepository: UsersRepository) {
 
     }
 
-    async execute({id}:GetUserUseCaseRequest): Promise<GetUserUseCaseResponse>{
-       const user = await this.usersRepository.findById(id)
+    async execute({ id }: GetUserUseCaseRequest): Promise<GetUserUseCaseResponse> {
+        const user = await this.usersRepository.findById(id)
 
-       if(!user){
+        if (!user) {
             throw new ResourceNotFoundError
-       }
+        }
 
-       return { user }
+        return { user }
     }
-    
-   
-   
+
+
+
 }
