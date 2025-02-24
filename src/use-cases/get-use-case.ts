@@ -7,7 +7,7 @@ interface GetUserUseCaseRequest {
 }
 
 interface GetUserUseCaseResponse {
-    User: User
+    user : User
 }
 
 export class GetUserUseCase{
@@ -22,7 +22,7 @@ export class GetUserUseCase{
             throw new ResourceNotFoundError
        }
 
-       return { User: user }
+       return { user }
     }
     
    
