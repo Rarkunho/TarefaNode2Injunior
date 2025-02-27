@@ -15,4 +15,5 @@ export interface PostsRepository {
     get(id: string): Promise<Post | null>
     delete(id: string): Promise<Post | null>
     getAll(): Promise<Post[] | null>
+    update(id: string, data: PostUpdateInput): Promise<Post | null>
 }
