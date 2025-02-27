@@ -5,6 +5,14 @@ import { PostsRepository, PostUpdateInput } from "../posts-repository";
 //tudo que for falar com o DB coloca aqui
 
 export class PrismaPostsRepository implements PostsRepository {
+    async get(id: string): Promise<Post | null> {
+        const post = await prisma.post.findUnique({
+            where: {
+                id
+            }
+        })
+        return post
+    }
     async getAll(): Promise<Post[] | null> {
         const posts = await prisma.post.findMany({})
         return posts

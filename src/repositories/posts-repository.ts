@@ -12,6 +12,7 @@ export interface PostUpdateInput {
 
 export interface PostsRepository {
     create(data: Prisma.PostUncheckedCreateInput): Promise<Post>
+    get(id: string): Promise<Post | null>
     delete(id: string): Promise<Post | null>
     getAll(): Promise<Post[] | null>
 }
