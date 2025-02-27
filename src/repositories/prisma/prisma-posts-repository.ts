@@ -1,11 +1,14 @@
 import { Post, Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
-import { PostsRepository } from "../posts-repository";
+import { PostsRepository, PostUpdateInput } from "../posts-repository";
 
 //tudo que for falar com o DB coloca aqui
 
 export class PrismaPostsRepository implements PostsRepository {
-
+    async getAll(): Promise<Post[] | null> {
+        const posts = await prisma.post.findMany({})
+        return posts
+    }
     async create(data: Prisma.PostUncheckedCreateInput) {
         const post = await prisma.post.create({
             data: {
@@ -25,4 +28,17 @@ export class PrismaPostsRepository implements PostsRepository {
             })
             return post
     }
+
+    async update(id: string, data: PostUpdateInput): Promise<Post | null> {
+           const post = await prisma.post.update({
+               where: { id },
+               data: {
+                    titulo: data.titulo,
+                    conteudo: data.conteudo,
+                    created_at: data.created_at,
+                    idAutor: data.idAutor
+               }
+           })
+           return post
+       }
 }

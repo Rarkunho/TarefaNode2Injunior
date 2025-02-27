@@ -1,6 +1,4 @@
-import { UsersRepository } from '@/repositories/users-repository'
 import { PostsRepository } from '@/repositories/posts-repository'
-import { User } from '@prisma/client'
 import { Post } from '@prisma/client'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
 

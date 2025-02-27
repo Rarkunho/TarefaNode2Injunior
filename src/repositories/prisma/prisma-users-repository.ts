@@ -5,6 +5,10 @@ import { UsersRepository, UserUpdateInput } from "../users-repository";
 //tudo que for falar com o DB após adicionar no repository acima, coloca aqui
 
 export class PrismaUsersRepository implements UsersRepository {
+    async getAll(): Promise<User[]> {
+        const users = await prisma.user.findMany({})
+        return users
+    }
     async update(id: string, data: UserUpdateInput): Promise<User | null> {
         const user = await prisma.user.update({
             where: { id },
