@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+import { Post, Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import { PostsRepository } from "../posts-repository";
 
@@ -16,5 +16,13 @@ export class PrismaPostsRepository implements PostsRepository {
             }
         })
         return post
+    }
+    async delete(id: string): Promise<Post | null> {
+            const post = await prisma.post.delete({
+                where: {
+                    id
+                }
+            })
+            return post
     }
 }
