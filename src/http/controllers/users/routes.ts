@@ -11,7 +11,7 @@ import { getAll } from "./getAll";
 import { getUserPosts } from "./getPost";
 
 export function userRoutes(app: FastifyInstance) {
-    app.post('/criarUser', register)
+    app.post('/users', register)
     app.post('/authenticate', authenticate)
 
     app.get('/users/:id', get)
@@ -25,6 +25,6 @@ export function userRoutes(app: FastifyInstance) {
 
     app.patch('/token/refresh', refresh)
 
-    // Authenticated
+    // Autenticar token do usuario
     app.get('/profile', { onRequest: [verifyJWT] }, profile)
 }
