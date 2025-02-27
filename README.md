@@ -33,7 +33,7 @@ Corpo JSON (Foto é opcional):
     }
 ```
 
-### Autenticar Usário - POST:
+### Autenticar Usuário - POST:
 Endereço:
 ```bash
     http://localhost:3333/authenticate
