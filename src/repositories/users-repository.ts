@@ -1,4 +1,4 @@
-import { Prisma, User } from "@prisma/client";
+import { Post, Prisma, User } from "@prisma/client";
 
 export interface UserUpdateInput {
     nome?: string,
@@ -16,4 +16,5 @@ export interface UsersRepository {
     findById(id: string): Promise<User | null>
     delete(id: string): Promise<User | null>
     update(id: string, data: UserUpdateInput): Promise<User | null>
+    getPosts(id: string): Promise<Post[] | null>
 }
