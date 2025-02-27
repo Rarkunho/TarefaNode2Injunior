@@ -15,12 +15,6 @@ Iniciar Prisma Studio:
     npx prisma studio
 ```
 
-Atualizar DB:
-```bash
-    npx prisma generate
-    npx prisma migrate dev
-```
-
 ## Requisições/Rotas HTTP:
 
 (Usando Insomnia)
@@ -39,10 +33,10 @@ Corpo JSON (Foto é opcional):
     }
 ```
 
-### Autenticar Uusário - POST:
+### Autenticar Usário - POST:
 Endereço:
 ```bash
-    http://localhost:3333/authenticate/(ID_Usuario)
+    http://localhost:3333/authenticate
 ```
 
 Corpo JSON:
