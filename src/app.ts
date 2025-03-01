@@ -6,6 +6,7 @@ import fastifyJwt from '@fastify/jwt'
 import fastifyCookie from '@fastify/cookie'
 import { env } from './env'
 import fastifyCors from '@fastify/cors'
+import { likesRoutes } from './http/controllers/likes/routes'
 
 export const app = fastify()
 
@@ -31,6 +32,7 @@ app.register(fastifyCookie)
 
 app.register(userRoutes)
 app.register(postsRoutes)
+app.register(likesRoutes)
 
 app.setErrorHandler((error, request, reply) => {
     if (error instanceof ZodError) {
