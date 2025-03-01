@@ -7,6 +7,7 @@ import fastifyCookie from '@fastify/cookie'
 import { env } from './env'
 import fastifyCors from '@fastify/cors'
 import { likesRoutes } from './http/controllers/likes/routes'
+import { commentsRoutes } from './http/controllers/comments/routes'
 
 export const app = fastify()
 
@@ -33,10 +34,11 @@ app.register(fastifyCookie)
 app.register(userRoutes)
 app.register(postsRoutes)
 app.register(likesRoutes)
+app.register(commentsRoutes)
 
 app.setErrorHandler((error, request, reply) => {
     if (error instanceof ZodError) {
         return reply.status(400).send({ message: 'Validation Error (Zod)', issues: error.format() })
     }
-    return reply.status(500).send({ message: 'Internal Server Error (Problema no código)', error })
+    return reply.status(500).send({ message: 'Internal Server Error (Problema no código):', error })
 })

@@ -16,7 +16,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
     try {
         const hasPostAndComment = idPost && idComentario
         if (hasPostAndComment) {
-            return reply.status(400).send('Você não pode dar like em um post e um comentário ao mesmo tempo')
+            throw new Error('Você não pode dar like em um post e um comentário ao mesmo tempo')
         }
     } catch (err) {
         throw err
