@@ -2,6 +2,7 @@ import { Prisma , Comentario } from "@prisma/client"
 
 export interface CommentsRepository{
     create(data: Prisma.ComentarioUncheckedCreateInput): Promise<Comentario>
+    getAll(): Promise<Comentario[] | null>
     // delete(id: string): Promise<Comentario | null>
     // get(id: string): Promise<Comentario | null>
     // getByPost(id: string): Promise<Comentario[] | null>

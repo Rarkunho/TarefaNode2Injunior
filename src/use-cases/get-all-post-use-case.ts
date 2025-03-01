@@ -15,13 +15,13 @@ export class GetAllPostUseCase {
     }
 
     async execute({}: GetAllPostUseCaseRequest): Promise<GetAllPostUseCaseResponse> {
-        const post = await this.PostsRepository.getAll()
+        const posts = await this.PostsRepository.getAll()
 
-        if (!post) {
+        if (!posts) {
             throw new ResourceNotFoundError
         }
 
-        return { post }
+        return { post : posts }
     }
 
 

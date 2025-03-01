@@ -14,6 +14,10 @@ export class PrismaCommentsRepository implements CommentsRepository{
                 })
         return Comentario
     }
+    async getAll(): Promise<Comentario[] | null> {
+        const Comentarios = await prisma.comentario.findMany({})
+        return Comentarios
+    }
     // delete(id: string): Promise<Comentario | null> {
     //     throw new Error("Method not implemented.");
     // }
