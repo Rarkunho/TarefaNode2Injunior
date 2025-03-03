@@ -4,6 +4,22 @@ import { CommentUpdateInput } from "../comments-repository";
 import { prisma } from "@/lib/prisma";
     
 export class PrismaCommentsRepository implements CommentsRepository{
+    async getByPost(id: string): Promise<Comentario[] | null> {
+        const comments = await prisma.comentario.findMany({
+            where: {
+                idPost: id
+            }
+        })
+        return comments
+    }
+    async getByUser(id: string): Promise<Comentario[] | null> {
+        const comments = await prisma.comentario.findMany({
+            where: {
+                idAutor: id
+            }
+        })
+        return comments
+    }
     async get(id: string): Promise<Comentario | null> {
             const Comentario = await prisma.comentario.findUnique({
                 where: {
