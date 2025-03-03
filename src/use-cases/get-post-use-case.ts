@@ -22,7 +22,7 @@ export class GetPostUseCase {
             throw new ResourceNotFoundError
         }
 
-        return { post }
+        return { post : post }
     }
 
 

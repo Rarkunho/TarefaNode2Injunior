@@ -4,6 +4,14 @@ import { LikesRepository } from "../likes-repository";
 
 
 export class PrismaLikesRepository implements LikesRepository{
+    async get(id: string): Promise<Like | null> {
+        const like = await prisma.like.findUnique({
+            where: {
+                id
+            }
+        })
+        return like
+    }
     async delete(id: string): Promise<Like | null> {
         const like = await prisma.like.delete({
             where: {
