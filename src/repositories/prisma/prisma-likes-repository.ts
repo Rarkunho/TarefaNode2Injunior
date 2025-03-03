@@ -23,20 +23,6 @@ export class PrismaLikesRepository implements LikesRepository{
         })
         return like
     }
-    // get(id: string): Promise<Like | null> {
-    //     throw new Error("Method not implemented.");
-    // }
-    // getByPost(id: string): Promise<Like[] | null> {
-    //     throw new Error("Method not implemented.");
-    // }
-    // getByUser(id: string): Promise<Like[] | null> {
-    //     throw new Error("Method not implemented.");
-    // }
-    // getByComment(id: string): Promise<Like[] | null> {
-    //     throw new Error("Method not implemented.");
-    // }
-    // delete(id: string): Promise<Like | null> {
-    //     throw new Error("Method not implemented.");
-    // }
+
     
 }

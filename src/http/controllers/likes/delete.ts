@@ -6,7 +6,7 @@ import { ResourceNotFoundError } from "@/use-cases/errors/resource-not-found-err
 import { DeleteLikeUseCase } from "@/use-cases/delete-like-use-case"
 import { PrismaLikesRepository } from "@/repositories/prisma/prisma-likes-repository"
 
-export async function delete(request: FastifyRequest, reply: FastifyReply) {
+export async function deleteLike(request: FastifyRequest, reply: FastifyReply) {
     const getParamsSchema = z.object({
         id: z.string().uuid()
     })
