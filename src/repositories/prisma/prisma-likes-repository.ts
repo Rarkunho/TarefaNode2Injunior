@@ -4,6 +4,30 @@ import { LikesRepository } from "../likes-repository";
 
 
 export class PrismaLikesRepository implements LikesRepository{
+    async getByPost(id: string): Promise<Like[] | null> {
+        const likes = await prisma.like.findMany({
+            where: {
+                idPost: id
+            }
+        })
+        return likes
+    }
+    async getByUser(id: string): Promise<Like[] | null> {
+        const likes = await prisma.like.findMany({
+            where: {
+                idAutor: id
+            }
+        })
+        return likes
+    }
+    async getByComment(id: string): Promise<Like[] | null> {
+        const likes = await prisma.like.findMany({
+            where: {
+                idComentario: id
+            }
+        })
+        return likes
+    }
     async get(id: string): Promise<Like | null> {
         const like = await prisma.like.findUnique({
             where: {
