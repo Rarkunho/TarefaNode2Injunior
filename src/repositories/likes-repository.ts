@@ -8,6 +8,6 @@ export interface LikesRepository{
     // getByPost(id: string): Promise<Like[] | null>
     // getByUser(id: string): Promise<Like[] | null>
     // getByComment(id: string): Promise<Like[] | null>
-    // delete(id: string): Promise<Like | null>
+    delete(id: string): Promise<Like | null>
 
 }

@@ -3,6 +3,14 @@ import { CommentsRepository } from "../comments-repository";
 import { prisma } from "@/lib/prisma";
     
 export class PrismaCommentsRepository implements CommentsRepository{
+    async delete(id: string): Promise<Comentario | null> {
+        const Comentario = await prisma.comentario.delete({
+            where: {
+                id
+            }
+        })
+        return Comentario
+    }
     async create(data: Prisma.ComentarioUncheckedCreateInput): Promise<Comentario> {
         const Comentario = await prisma.comentario.create({
                     data: {
