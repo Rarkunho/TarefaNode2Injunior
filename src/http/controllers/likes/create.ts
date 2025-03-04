@@ -5,13 +5,12 @@ import { CreateLikeUseCase } from "@/use-cases/create-like-use-case"
 
 export async function create(request: FastifyRequest, reply: FastifyReply) {
     const createBodySchema = z.object({
-        idAutor: z.string().uuid(),
         created_at: z.string().transform((str) => new Date(str)),
         idPost: z.string().uuid().optional(),
         idComentario: z.string().uuid().optional()
     })
 
-    const { idAutor, created_at, idPost, idComentario } = createBodySchema.parse(request.body)
+    const { created_at, idPost, idComentario } = createBodySchema.parse(request.body)
 
     try {
         const hasPostAndComment = idPost && idComentario
@@ -26,7 +25,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
         const prismaLikesRepository = new PrismaLikesRepository()
         const createLikeUseCase = new CreateLikeUseCase(prismaLikesRepository)
         await createLikeUseCase.execute({
-            idAutor,
+            idAutor : request.user.sub,
             created_at,
             idPost,
             idComentario

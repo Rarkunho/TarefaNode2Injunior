@@ -47,6 +47,7 @@ model Post {
 model Comentario {
   id         String   @id @default(uuid())
   conteudo   String
+  //@default(now())
   created_at DateTime
   idAutor    String
   autor      User     @relation(fields: [idAutor], references: [id])

@@ -19,9 +19,9 @@ export function userRoutes(app: FastifyInstance) {
     app.get('/users/posts/:id', getUserPosts)
 
 
-    app.delete('/users/:id', deleteUser)
+    app.delete('/users/:id', { onRequest: [verifyJWT] }, deleteUser)
 
-    app.patch('/users/:id', update)
+    app.patch('/users/:id', { onRequest: [verifyJWT] }, update)
 
     app.patch('/token/refresh', refresh)
 
